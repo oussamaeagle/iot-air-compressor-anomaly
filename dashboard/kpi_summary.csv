@@ -1,0 +1,2 @@
+total_measurements,total_anomalies,anomaly_percentage,best_prediction_model,best_rmse,last_anomaly_date,most_problematic_sensor
+100000,5012,5.012,NaiveBaseline,0.21910900885613055,2020-02-14 13:35:32,Towers

@@ -1,0 +1,5 @@
+model_name,task,target_sensor,rmse,mae,r2,precision,recall,f1_score,conclusion
+NaiveBaseline,prediction,Oil_temperature,0.21910900885613055,0.12348791744652415,0.9928866907691242,,,,Reference: prediction(t) = valeur reelle(t-1).
+LSTM,prediction,Oil_temperature,2.626141225554348,2.1313339395184743,-0.02185053090839495,,,,La baseline naive est meilleure ou equivalente au LSTM sur le test.
+Transformer,prediction,Oil_temperature,2.5768495831053118,2.1245198291789755,0.016148941638673198,,,,La baseline naive est meilleure ou equivalente au Transformer sur le test.
+Autoencoder,anomaly_detection,Oil_temperature,,,,,,,Mode non supervise: 5012 anomalies detectees (5.01%).

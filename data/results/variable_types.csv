@@ -1,0 +1,17 @@
+column,dtype
+timestamp,datetime64[ns]
+TP2,float32
+TP3,float32
+H1,float32
+DV_pressure,float32
+Reservoirs,float32
+Oil_temperature,float32
+Motor_current,float32
+COMP,float32
+DV_eletric,float32
+Towers,float32
+MPG,float32
+LPS,float32
+Pressure_switch,float32
+Oil_level,float32
+Caudal_impulses,float32

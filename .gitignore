@@ -1,0 +1,16 @@
+# Données lourdes (à télécharger, voir README)
+data/raw/*.csv
+data/processed/
+data/results/*_predictions.csv
+data/results/*_anomalies.csv
+dashboard/powerbi_dataset.csv
+dashboard/alerts.csv
+database/*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
