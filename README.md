@@ -49,7 +49,37 @@ python main.py --filter-comp-active            # uniquement compresseur actif
 python main.py                                 # dataset complet
 ```
 
-## Résultats (échantillon de 100 000 mesures, 1 epoch)
+## Résultats : étude multi-capteurs (20 epochs)
+
+Code et résultats complets dans [`etude_multi_capteurs/`](etude_multi_capteurs/) : 50 000 mesures, découpage temporel (39 940 séquences d'entraînement, 9 940 de test), séquences de 60 pas, scaler ajusté uniquement sur la période d'entraînement (pas de fuite de données), 5 capteurs cibles, sélection des variables par corrélation.
+
+| Capteur cible | RMSE LSTM | RMSE Transformer | RMSE baseline naïve | R² LSTM | LSTM vs baseline |
+|---|---|---|---|---|---|
+| TP2 | **0,616** | 0,901 | 0,977 | 0,929 | erreur −37 % |
+| TP3 | 0,080 | 0,467 | 0,063 | 0,980 | erreur +27 % |
+| Reservoirs | 0,085 | 0,508 | 0,063 | 0,978 | erreur +34 % |
+| Motor_current | 0,577 | 1,350 | 0,529 | 0,918 | erreur +9 % |
+| Oil_temperature | 2,192 | 4,789 | 0,248 | 0,755 | erreur +783 % |
+
+**Lecture :**
+- Sur la pression **TP2**, le LSTM réduit l'erreur de **37 %** par rapport à la baseline naïve (RMSE 0,616 contre 0,977, R² 0,93).
+- Sur les signaux très lisses (TP3, Reservoirs, Motor_current, Oil_temperature), la baseline « dernière valeur connue » reste meilleure : le projet la garde comme référence obligatoire pour ne pas surestimer l'apport du Deep Learning.
+- Le Transformer est moins bon que le LSTM sur les 5 capteurs.
+- **Autoencoder** (seuil au 95e percentile de l'erreur de reconstruction d'entraînement) : **3 561 anomalies sur 49 940 points (7,1 %)**.
+
+Fichiers : [`metrics_report.csv`](etude_multi_capteurs/resultats/metrics_report.csv), [`anomaly_summary.csv`](etude_multi_capteurs/resultats/anomaly_summary.csv), [`academic_interpretation.md`](etude_multi_capteurs/resultats/academic_interpretation.md).
+
+![Prévision LSTM sur TP2](etude_multi_capteurs/resultats/figures/actual_vs_predicted_lstm_tp2.png)
+
+Relancer l'étude (CSV dans `data/raw/`) :
+
+```bash
+cd etude_multi_capteurs
+pip install -r requirements.txt
+python main.py
+```
+
+## Essai rapide du pipeline principal (échantillon de 100 000 mesures, 1 epoch)
 
 | Modèle | Tâche | RMSE | MAE | R² |
 |---|---|---|---|---|

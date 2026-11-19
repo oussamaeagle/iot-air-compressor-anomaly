@@ -1,0 +1,2 @@
+threshold,total_points,anomalies_detected,anomaly_percentage,threshold_method
+0.012670204974710941,49940,3561,7.1306,95th percentile of training reconstruction error

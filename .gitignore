@@ -14,3 +14,7 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 .env
+
+# Etude multi-capteurs : sorties regenerees
+etude_multi_capteurs/outputs/
+etude_multi_capteurs/database/
